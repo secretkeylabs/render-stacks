@@ -38,9 +38,9 @@ fi
 
 echo >&3 "$0: Waiting for the API to come up"
 COUNTER=0
-until [ $(curl --write-out "%{http_code}\n" "http://${STACKS_BLOCKCHAIN_API_HOST}:${STACKS_BLOCKCHAIN_API_PORT}/extended/v1/status" --output output.txt --silent) -eq "200" ]; do
+until [ $(curl --write-out "%{http_code}\n" "http://${STACKS_BLOCKCHAIN_API_HOST}/extended/v1/status" --output output.txt --silent) -eq "200" ]; do
     COUNTER=$((COUNTER+1))
-    echo "$0:$COUNTER) Waiting for 200 from: http://${STACKS_BLOCKCHAIN_API_HOST}:${STACKS_BLOCKCHAIN_API_PORT}/extended/v1/status"
+    echo "$0:$COUNTER) Waiting for 200 from: http://${STACKS_BLOCKCHAIN_API_HOST}/extended/v1/status"
     sleep 30
 done
 echo >&3 "$0"
